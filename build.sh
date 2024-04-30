@@ -8,6 +8,9 @@ repo init -u https://github.com/PixelOS-AOSP/manifest.git -b fourteen --git-lfs 
 git clone https://github.com/Legendleo90/local_manifests.git -b pos .repo/local_manifests
 repo sync -c --force-sync --optimized-fetch --no-tags --no-clone-bundle --prune -j$(nproc --all)
 
+#ksu
+cd kernel/xiaomi/beryllium && curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash - && cd ../../..
+
 # build
 /opt/crave/resync.sh
 . build/envsetup.sh
