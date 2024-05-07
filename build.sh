@@ -4,9 +4,8 @@
 rm -rf .repo/local_manifests
 
 #sync
-repo init -u https://github.com/PixelOS-AOSP/manifest.git -b fourteen --git-lfs --depth=1
-git clone https://github.com/Legendleo90/local_manifests.git -b pos .repo/local_manifests
-repo sync -c --force-sync --optimized-fetch --no-tags --no-clone-bundle --prune -j$(nproc --all)
+repo init -u https://github.com/RisingTechOSS/android -b fourteen --git-lfs --depth=1
+repo sync -c --no-clone-bundle --optimized-fetch --prune --force-sync -j$(nproc --all)
 
 #ksu
 cd kernel/xiaomi/beryllium && curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash - && cd ../../..
@@ -14,6 +13,5 @@ cd kernel/xiaomi/beryllium && curl -LSs "https://raw.githubusercontent.com/tiann
 # build
 /opt/crave/resync.sh
 . build/envsetup.sh
-lunch aosp_beryllium-ap1a-user
-make installclean
-make bacon
+riseup beryllium user
+rise b
