@@ -12,7 +12,7 @@ repo sync -c --no-clone-bundle --optimized-fetch --prune --force-sync -j$(nproc 
 cd kernel/xiaomi/beryllium && curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash - && cd ../../..
 
 # build
-/opt/crave/resync.sh
 . build/envsetup.sh
 riseup beryllium user
+make installclean
 rise b
