@@ -2,6 +2,13 @@
 
 #removals
 rm -rf .repo/local_manifests
+rm -rf vendor/gms
+rm -rf .repo/projects/vendor/gms.git
+rm -rf .repo/project-objects/*/android_vendor_gms.git
+
+#git-lfs
+sudo apt install git-lfs -y
+git lfs install
 
 #sync
 repo init -u https://github.com/RisingTechOSS/android -b fourteen --git-lfs --depth=1
