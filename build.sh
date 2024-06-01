@@ -1,5 +1,11 @@
 # Removals
-rm -rf .repo/local_manifests
+rm -rf .repo
+rm -rf out
+rm -rf build
+rm -rf vendor
+rm -rf packages
+rm -rf frameworks
+rm -rf device
 
 # Initialize repo with specified manifest
 repo init -u https://github.com/RisingTechOSS/android -b fourteen --git-lfs --depth=1 
