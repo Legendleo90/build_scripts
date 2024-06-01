@@ -1,17 +1,12 @@
 # Removals
-rm -rf .repo
-rm -rf out
-rm -rf build
-rm -rf vendor
-rm -rf packages
-rm -rf frameworks
-rm -rf device
+rm -rf .repo/local_manifests
+rm -rf external
 
 # Initialize repo with specified manifest
 repo init -u https://github.com/RisingTechOSS/android -b fourteen --git-lfs --depth=1 
 
 # Clone local_manifests repository
-git clone https://github.com/Legendleo90/local_manifests --depth 1 -b rising .repo/local_manifests 
+git clone https://github.com/Legendleo90/local_manifests --depth 1 -b rising .repo/local_manifests
 
 # Sync the repositories
 /opt/crave/resync.sh
