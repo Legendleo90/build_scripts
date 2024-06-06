@@ -8,15 +8,7 @@ repo init -u https://github.com/RisingTechOSS/android -b fourteen --git-lfs --de
 git clone https://github.com/Legendleo90/local_manifests --depth 1 -b rising .repo/local_manifests
 
 # Sync the repositories
-if [ -f /opt/crave/resync.sh ]; then
-  /opt/crave/resync.sh
-else
-  repo sync -c --no-clone-bundle --optimized-fetch --prune --force-sync -j$(nproc --all)
-fi
-
-# Custom Repos
-rm -rf build/make && git clone https://github.com/RisingOS-staging/android_build build/make --depth=1
-rm -rf vendor/rising && git clone https://github.com/RisingOS-staging/android_vendor_rising vendor/rising --depth=1
+curl https://raw.githubusercontent.com/sounddrill31/docker-images/04449990912b9d7ee594193883740037f0ac80a7/aosp/common/resync.sh | bash
 
 # Private Keys
 rm -rf vendor/lineage-priv && git clone https://github.com/Legendleo90/vendor_lineage-priv vendor/lineage-priv
@@ -26,9 +18,12 @@ source build/envsetup.sh
 
 # Lunch configuration
 riseup beryllium user
+
+# Cleanup directories
 make installclean
 
-# Build
-croot
+# Git-lfs
 repo forall -c 'git lfs install && git lfs pull && git lfs checkout'
+
+# Build
 rise b
