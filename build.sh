@@ -20,7 +20,7 @@ source build/envsetup.sh
 riseup beryllium user
 
 # Cleanup directories
-make installclean
+# make installclean
 
 # Git-lfs
 repo forall -c 'git lfs install && git lfs pull && git lfs checkout'
