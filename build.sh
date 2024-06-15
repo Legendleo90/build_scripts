@@ -1,23 +1,24 @@
 # Removals
 rm -rf .repo/local_manifests
+rm -rf vendor/evolution-priv
 
 # Initialize repo with specified manifest
-repo init -u https://github.com/RisingTechOSS/android -b fourteen --git-lfs --depth=1
+repo init -u https://github.com/Evolution-XYZ/manifest -b udc --git-lfs --depth=1
 
 # Clone local_manifests repository
-git clone https://github.com/Legendleo90/local_manifests --depth 1 -b rising .repo/local_manifests
+git clone https://github.com/Legendleo90/local_manifests --depth 1 -b los .repo/local_manifests
 
 # Sync the repositories
-curl https://raw.githubusercontent.com/sounddrill31/docker-images/04449990912b9d7ee594193883740037f0ac80a7/aosp/common/resync.sh | bash
+/opt/crave/resync.sh
 
 # Private Keys
-rm -rf vendor/lineage-priv && git clone https://github.com/Legendleo90/vendor_lineage-priv vendor/lineage-priv
+git clone https://github.com/Legendleo90/vendor_lineage-priv -b los vendor/evolution-priv
 
 # Set up build environment
 source build/envsetup.sh
 
 # Lunch configuration
-riseup beryllium user
+lunch lineage_beryllium-user
 
 # Cleanup directories
 # make installclean
@@ -26,4 +27,4 @@ riseup beryllium user
 repo forall -c 'git lfs install && git lfs pull && git lfs checkout'
 
 # Build
-rise b
+m evolution
