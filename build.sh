@@ -8,7 +8,10 @@ repo init -u https://github.com/RisingTechOSS/android -b fourteen --git-lfs --de
 git clone https://github.com/Legendleo90/local_manifests --depth 1 -b rising .repo/local_manifests
 
 # Sync the repositories
-curl https://raw.githubusercontent.com/sounddrill31/docker-images/04449990912b9d7ee594193883740037f0ac80a7/aosp/common/resync.sh | bash
+/opt/crave/resync.sh
+
+# Custom Repos
+rm -rf frameworks/base && git clone https://github.com/Legendleo90/rising_fwb frameworks/base --depth=1
 
 # Private Keys
 rm -rf vendor/lineage-priv && git clone https://github.com/Legendleo90/vendor_lineage-priv vendor/lineage-priv
