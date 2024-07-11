@@ -1,5 +1,5 @@
 # Removals
-device/xiaomi/beryllium
+rm -rf device/xiaomi/beryllium
 
 # Initialize repo with specified manifest
 repo init -u https://github.com/RisingTechOSS/android -b fourteen --git-lfs --depth=1
