@@ -13,6 +13,9 @@ git clone https://github.com/Legendleo90/device_xiaomi_beryllium -b rising devic
 # Cherry-picks
 cd frameworks/base && git fetch https://github.com/Legendleo90/android_frameworks_base && git cherry-pick 64b309df6a5a834bbc5bab48b918e5dd8b944016 && cd ../..
 
+# Customs
+rm -rf frameworks/native && git clone https://github.com/Legendleo90/rising_native frameworks/native --depth=1
+
 # Private Keys
 rm -rf vendor/lineage-priv && git clone https://github.com/Legendleo90/vendor_lineage-priv vendor/lineage-priv
 
