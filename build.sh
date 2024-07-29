@@ -1,35 +1,28 @@
 # Removals
 rm -rf device/xiaomi/beryllium
+rm -rf vendor/aospa
+rm -rf vendor/aospa/prebuilt
+rm -rf frameworks/base
+rm -rf packages/apps/Settings
 
 # Initialize repo with specified manifest
-repo init -u https://github.com/RisingTechOSS/android -b fourteen --git-lfs --depth=1
+repo init -u https://github.com/SomethingOS/manifest -b uvite --git-lfs --depth=1
 
 # Clone device tree
-git clone https://github.com/Legendleo90/device_xiaomi_beryllium -b rising device/xiaomi/beryllium
+git clone https://github.com/Legendleo90/device_xiaomi_beryllium-clo -b uvite device/xiaomi/beryllium
 
 # Sync the repositories
-/opt/crave/resync.sh
-
-# Cherry-picks
-cd frameworks/base && git fetch https://github.com/Legendleo90/android_frameworks_base && git cherry-pick 64b309df6a5a834bbc5bab48b918e5dd8b944016 && cd ../..
+/opt/crave/resync.sh && /opt/crave/resync.sh
 
 # Customs
-rm -rf frameworks/native && git clone https://github.com/Legendleo90/rising_native frameworks/native --depth=1
+rm -rf frameworks/base && git clone https://github.com/Oneplus-6T/something_fwb -b uvite frameworks/base --depth=1
+rm -rf packages/apps/Settings && git clone https://github.com/Oneplus-6T/something_Settings -b uvite packages/apps/Settings --depth=1
+rm -rf vendor/aospa && git clone https://github.com/Oneplus-6T/something_vendor -b uvite vendor/aospa --depth=1
+rm -rf vendor/aospa/prebuilt && git clone https://gitlab.com/ThankYouMario/android_vendor_aospa_prebuilt -b uvite vendor/aospa/prebuilt --depth=1
+rm -rf packages/apps/GameSpace && git clone https://github.com/Oneplus-6T/GameSpace -b fourteen packages/apps/GameSpace --depth=1
 
 # Private Keys
-rm -rf vendor/lineage-priv && git clone https://github.com/Legendleo90/vendor_lineage-priv vendor/lineage-priv
-
-# Set up build environment
-source build/envsetup.sh
-
-# Lunch configuration
-riseup beryllium user
-
-# Cleanup directories
-make installclean
-
-# Git-lfs
-repo forall -c 'git lfs install && git lfs pull && git lfs checkout'
+rm -rf ~/.android-certs && git clone https://github.com/Legendleo90/private_keys ~/.android-certs
 
 # Build
-rise b
+./rom-build.sh beryllium -c -t user -s ~/.android-certs
