@@ -2,6 +2,7 @@
 rm -rf device/xiaomi/beryllium
 rm -rf vendor/aospa
 rm -rf vendor/aospa/prebuilt
+rm -rf packages/apps/Launcher3
 rm -rf frameworks/base
 rm -rf packages/apps/Settings
 
@@ -19,6 +20,7 @@ rm -rf frameworks/base && git clone https://github.com/Oneplus-6T/aospa_fwb -b u
 rm -rf packages/apps/Settings && git clone https://github.com/Oneplus-6T/aospa_Settings -b uvite packages/apps/Settings --depth=1
 rm -rf vendor/aospa && git clone https://github.com/Oneplus-6T/aospa_vendor -b uvite vendor/aospa --depth=1
 rm -rf vendor/aospa/prebuilt && git clone https://gitlab.com/ThankYouMario/android_vendor_aospa_prebuilt -b uvite vendor/aospa/prebuilt --depth=1
+rm -rf packages/apps/Launcher3 && git clone https://github.com/Oneplus-6T/aospa_Launcher3 -b unity packages/apps/Launcher3 --depth=1
 rm -rf packages/apps/GameSpace && git clone https://github.com/Oneplus-6T/GameSpace -b fourteen packages/apps/GameSpace --depth=1
 
 # Private Keys
