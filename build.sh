@@ -24,5 +24,11 @@ rm -rf packages/apps/GameSpace && git clone https://github.com/Oneplus-6T/GameSp
 # Private Keys
 rm -rf ~/.android-certs && git clone https://github.com/Legendleo90/private_keys ~/.android-certs
 
+# Set up build environment
+source build/envsetup.sh
+
+# Cleanup directories
+make installclean
+
 # Build
-./rom-build.sh beryllium -c -t user -s ~/.android-certs
+./rom-build.sh beryllium -t user -s ~/.android-certs
