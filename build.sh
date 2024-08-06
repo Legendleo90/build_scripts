@@ -7,6 +7,7 @@ rm -rf frameworks/av
 rm -rf packages/apps/Settings
 rm -rf packages/apps/Paranoid/SystemUI
 rm -rf prebuilts
+rm -rf external
 
 # Initialize repo with specified manifest
 repo init -u https://github.com/AOSPA/manifest -b uvite --git-lfs --depth=1
