@@ -2,28 +2,23 @@
 rm -rf device/xiaomi/beryllium
 
 # Initialize repo with specified manifest
-repo init -u https://github.com/RisingTechOSS/android -b fourteen --git-lfs --depth=1
+repo init -u https://github.com/PixelOS-AOSP/manifest.git -b fourteen --git-lfs --depth=1
 
 # Clone device tree
-git clone https://github.com/Legendleo90/device_xiaomi_beryllium -b rising device/xiaomi/beryllium
+git clone https://github.com/Legendleo90/device_xiaomi_beryllium-4.19 -b fourteen-aosp device/xiaomi/beryllium
 
 # Sync the repositories
 /opt/crave/resync.sh
 
-# Cherry-picks
-cd frameworks/base && git fetch https://github.com/Legendleo90/android_frameworks_base && git cherry-pick 64b309df6a5a834bbc5bab48b918e5dd8b944016 && cd ../..
-
-# Customs
-rm -rf frameworks/native && git clone https://github.com/Legendleo90/rising_native frameworks/native --depth=1
-
 # Private Keys
-rm -rf vendor/lineage-priv && git clone https://github.com/Legendleo90/vendor_lineage-priv vendor/lineage-priv
+rm -rf .android-certs && git clone https://github.com/Legendleo90/private_keys .android-certs
+cp .android-certs/* vendor/aosp/signing/keys/
 
 # Set up build environment
 source build/envsetup.sh
 
 # Lunch configuration
-riseup beryllium user
+lunch aosp_beryllium-ap2a-eng
 
 # Cleanup directories
 make installclean
@@ -32,4 +27,4 @@ make installclean
 repo forall -c 'git lfs install && git lfs pull && git lfs checkout'
 
 # Build
-rise b
+mka bacon
