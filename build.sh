@@ -8,7 +8,7 @@ repo init --depth=1 --no-repo-verify --git-lfs -u https://github.com/ProjectInfi
 git clone https://github.com/Legendleo90/device_xiaomi_beryllium-4.19 -b fourteen device/xiaomi/beryllium
 
 # Sync the repositories
-/opt/crave/resync.sh
+/opt/crave/resync.sh && /opt/crave/resync.sh
 
 # Private Keys
 rm -rf vendor/infinity-priv && git clone https://github.com/Legendleo90/vendor_lineage-priv -b infinity vendor/infinity-priv
