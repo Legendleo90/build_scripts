@@ -2,26 +2,22 @@
 rm -rf device/xiaomi/beryllium
 
 # Initialize repo with specified manifest
-repo init -u https://github.com/PixelOS-AOSP/manifest.git -b fourteen --git-lfs --depth=1
+repo init --depth=1 --no-repo-verify --git-lfs -u https://github.com/ProjectInfinity-X/manifest -b QPR3 -g default,-mips,-darwin,-notdefault
 
 # Clone device tree
-git clone https://github.com/Legendleo90/device_xiaomi_beryllium-4.19 -b fourteen-aosp device/xiaomi/beryllium
+git clone https://github.com/Legendleo90/device_xiaomi_beryllium-4.19 -b fourteen-inf device/xiaomi/beryllium
 
 # Sync the repositories
 /opt/crave/resync.sh
 
 # Private Keys
-rm -rf .android-certs && git clone https://github.com/Legendleo90/private_keys .android-certs
-cp .android-certs/* vendor/aosp/signing/keys/
+rm -rf vendor/infinity-priv && git clone https://github.com/Legendleo90/vendor_lineage-priv -b inf vendor/infinity-priv
 
 # Set up build environment
 source build/envsetup.sh
 
-# Cherry-picks
-cd hardware/xiaomi && git fetch https://github.com/POS-Marble/android_hardware_xiaomi fourteen-qpr1 && git cherry-pick 59b92c4 && cd ../..
-
 # Lunch configuration
-lunch aosp_beryllium-ap2a-eng
+lunch infinity_beryllium-user
 
 # Cleanup directories
 make installclean
