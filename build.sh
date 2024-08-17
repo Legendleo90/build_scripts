@@ -16,6 +16,9 @@ rm -rf vendor/infinity-priv && git clone https://github.com/Legendleo90/vendor_l
 # Set up build environment
 source build/envsetup.sh
 
+# Cherry-picks
+cd hardware/xiaomi && git fetch https://github.com/POS-Marble/android_hardware_xiaomi fourteen-qpr1 && git cherry-pick 59b92c4 && cd ../..
+
 # Lunch configuration
 lunch infinity_beryllium-user
 
