@@ -17,6 +17,9 @@ cp .android-certs/* vendor/aosp/signing/keys/
 # Set up build environment
 source build/envsetup.sh
 
+# Cherry-picks
+cd hardware/xiaomi && git fetch https://github.com/POS-Marble/android_hardware_xiaomi fourteen-qpr1 && git cherry-pick 59b92c4 && cd ../..
+
 # Lunch configuration
 lunch aosp_beryllium-ap2a-eng
 
