@@ -10,6 +10,9 @@ git clone https://github.com/Legendleo90/device_xiaomi_beryllium-4.19 -b fourtee
 # Sync the repositories
 /opt/crave/resync.sh && /opt/crave/resync.sh
 
+# Cherry-picks
+wget https://pixeldrain.com/u/SJHf836f && mv SJHf836f keyguard_clock_ios.xml && rm -rf frameworks/base/packages/SystemUI/res-keyguard/layout/keyguard_clock_ios.xml && mv keyguard_clock_ios.xml /tmp/src/android/frameworks/base/packages/SystemUI/res-keyguard/layout/
+
 # Private Keys
 rm -rf vendor/infinity-priv && git clone https://github.com/Legendleo90/vendor_lineage-priv -b infinity vendor/infinity-priv
 
