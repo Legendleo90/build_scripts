@@ -1,6 +1,5 @@
 # Removals
 rm -rf device/xiaomi/beryllium
-rm -rf frameworks/native
 
 # Initialize repo with specified manifest
 repo init -u https://github.com/ProjectEverest/manifest -b 14 --git-lfs --depth=1
