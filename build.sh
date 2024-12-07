@@ -2,7 +2,7 @@
 rm -rf device/xiaomi/beryllium
 
 # Initialize repo with specified manifest
-repo init -u https://github.com/RisingTechOSS/android -b fourteen --git-lfs --depth=1
+repo init -u https://github.com/RisingTechOSS/android -b fifteen --git-lfs --depth=1
 
 # Clone device tree
 git clone https://github.com/Legendleo90/device_xiaomi_beryllium -b rising device/xiaomi/beryllium
@@ -18,9 +18,6 @@ source build/envsetup.sh
 
 # Lunch configuration
 riseup beryllium user
-
-# Cleanup directories
-make installclean
 
 # Git-lfs
 repo forall -c 'git lfs install && git lfs pull && git lfs checkout'
